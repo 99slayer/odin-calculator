@@ -1,24 +1,28 @@
 const value1 = [];
 const value2 = [];
-let operator = undefined;
+let operator = '';
 let calcDisplay = document.querySelector('.calcDisplay');
 
 function getValue(x){
-    if(operator!==undefined){
+    if(operator!==''){
         value2.push(x);
-        calcDisplay.textContent = `${value2.join('')}`;
         console.log(value1,value2,operator);
     }
     else{
         value1.push(x);
-        calcDisplay.textContent = `${value1.join('')}`;
         console.log(value1,value2,operator);
     }
+    refreshDisplay();
 };
 function getOperator(x){
     operator = x;
-    calcDisplay.textContent = x;
     console.log(value1,value2,operator);
+    refreshDisplay();
+};
+function refreshDisplay(){
+    let display = [...value1,...operator,...value2];
+    calcDisplay.textContent = display.join('');
+    console.log(display);
 };
 function operate(o,a,b){
     if(o==add){
