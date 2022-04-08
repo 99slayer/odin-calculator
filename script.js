@@ -7,13 +7,37 @@ let gettingNumber;
 let calcDisplay = document.querySelector('.calcDisplay');
 
 function calculate(){
+    const checkForOperator = inputArray.some((element)=>{
+        return isNaN(element);
+    });
+    //returns if user tries to calculate with no operators
+    if(checkForOperator==false){
+        return;
+    };
+    //wont allow user to calculate with a 'hanging' operator
+    if(isNaN(runningArray[runningArray.length-1])){
+        clearArray(runningArray);
+    };
     inputArray.push(runningArray.join(''));
+    // if(inputArray.length<3){
+    //     refreshDisplay('please input more.')
+    //     return;
+    // };
     getNumberArray();
     getOperatorArray();
     let finalValue = numberArray[0];
     for(let i = operatorArray.length,x = 0;i>0;--i,++x){
+        if((finalValue==0||numberArray[x+1]==0)&&operatorArray[x]=='/'){
+            refreshDisplay('I\' afraid I can\t do that, Dave.');
+            setTimeout(clearCalc,2000);
+            return;
+        };
         finalValue = operate(finalValue,numberArray[x+1],operatorArray[x])
     }
+    //only shows decimal values if there are any
+    if(finalValue%1!==0){
+        finalValue = Number.parseFloat(finalValue).toFixed(2);
+    };
     refreshDisplay(finalValue);
     holdFinal = finalValue;
     console.log('Calculated.')
@@ -29,6 +53,8 @@ function clearCalc(){
     gettingNumber = undefined;
     refreshDisplay('DISPLAY');
     console.log('Calculator cleared.');
+    console.log(runningArray,inputArray,numberArray,operatorArray);
+    console.log(holdFinal,gettingNumber);
 };
 function getNumberArray(){
     numberArray = inputArray.filter((arrayElement)=>{
@@ -123,8 +149,8 @@ function operate(value1,value2,operator){
     };
 };
 function add(a,b){
-    a = parseInt(a);
-    b = parseInt(b);
+    a = parseFloat(a);
+    b = parseFloat(b);
     return a+b;
 };
 function subtract(a,b){
@@ -136,8 +162,3 @@ function multiply(a,b){
 function divide(a,b){
     return a/b;
 };
-// let testObject = {
-//     subtract:function(a,b){
-//         return a-b;
-//     },
-// };
