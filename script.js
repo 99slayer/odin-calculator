@@ -162,3 +162,7 @@ function multiply(a,b){
 function divide(a,b){
     return a/b;
 };
+function undo(){
+    runningArray.pop()
+    refreshDisplay(runningArray.join(''));
+};
