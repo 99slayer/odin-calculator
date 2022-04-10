@@ -11,24 +11,24 @@
     <div class="calcContainer">
         <div class="calcDisplay">DISPLAY</div>
         <div class="buttonContainer">
-            <button onclick="getInput('1')">1</button>
-            <button onclick="getInput('2')">2</button>
-            <button onclick="getInput('3')">3</button>
-            <button onclick="getInput('4')">4</button>
-            <button onclick="getInput('5')">5</button>
-            <button onclick="getInput('6')">6</button>
-            <button onclick="getInput('7')">7</button>
-            <button onclick="getInput('8')">8</button>
-            <button onclick="getInput('9')">9</button>
-            <button onclick="getInput('0')">0</button>
-            <button onclick="getInput('+')">+</button>
-            <button onclick="getInput('-')">-</button>
-            <button onclick="getInput('*')">*</button>
-            <button onclick="getInput('/')">/</button>
-            <button onclick="clearCalc()">C</button>
-            <button onclick="calculate()">=</button>
-            <button>.</button>
-            <button onclick="undo()">UNDO</button>
+            <button class="btn num" onclick="getInput('1')">1</button>
+            <button class="btn num" onclick="getInput('2')">2</button>
+            <button class="btn num" onclick="getInput('3')">3</button>
+            <button class="btn num" onclick="getInput('4')">4</button>
+            <button class="btn num" onclick="getInput('5')">5</button>
+            <button class="btn num" onclick="getInput('6')">6</button>
+            <button class="btn num" onclick="getInput('7')">7</button>
+            <button class="btn num" onclick="getInput('8')">8</button>
+            <button class="btn num" onclick="getInput('9')">9</button>
+            <button class="btn num" onclick="getInput('0')">0</button>
+            <button class="btn operator" onclick="getInput('+')">+</button>
+            <button class="btn operator" onclick="getInput('-')">-</button>
+            <button class="btn operator" onclick="getInput('*')">*</button>
+            <button class="btn operator" onclick="getInput('/')">/</button>
+            <button class="btn decimal" onclick="addDecimal()">.</button>
+            <button class="btn clear" onclick="clearCalc()">C</button>
+            <button class="btn equals" onclick="calculate()">=</button>
+            <button class="btn undo" onclick="undo()">UNDO</button>
         </div>
     </div>
     <script src="script.js"></script>

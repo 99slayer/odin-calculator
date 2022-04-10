@@ -19,10 +19,6 @@ function calculate(){
         clearArray(runningArray);
     };
     inputArray.push(runningArray.join(''));
-    // if(inputArray.length<3){
-    //     refreshDisplay('please input more.')
-    //     return;
-    // };
     getNumberArray();
     getOperatorArray();
     let finalValue = numberArray[0];
@@ -34,7 +30,7 @@ function calculate(){
         };
         finalValue = operate(finalValue,numberArray[x+1],operatorArray[x])
     }
-    //only shows decimal values if there are any
+    //only shows decimal points if there are decimal values.
     if(finalValue%1!==0){
         finalValue = Number.parseFloat(finalValue).toFixed(2);
     };
@@ -108,7 +104,7 @@ function getInput(x){
     }
     //Selecting number(s)
     if(!(isNaN(x))){
-        if(isNaN(runningArray[0])){
+        if(isNaN(runningArray[0])&&runningArray[0]!=='.'){
             clearArray(runningArray);
         };
         if(holdFinal!==undefined){
@@ -164,5 +160,26 @@ function divide(a,b){
 };
 function undo(){
     runningArray.pop()
+    refreshDisplay(runningArray.join(''));
+};
+function addDecimal(){
+    const decimalCheck = runningArray.some((element)=>{
+        return (element=='.');
+    });
+    const operatorCheck = runningArray.some((element)=>{
+        return (element=='+'||element=='-'||element=='*'||element=='/')
+    })
+    if(decimalCheck==true){
+        return;
+    }
+    if(operatorCheck==true){
+        gettingNumber = true;
+        inputArray.push(runningArray[runningArray.length - 1])
+        clearArray(runningArray);
+        runningArray.push('.');
+    }
+    else{
+        runningArray.push('.')
+    };
     refreshDisplay(runningArray.join(''));
 };
