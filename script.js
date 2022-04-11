@@ -36,10 +36,6 @@ function calculate(){
     };
     refreshDisplay(finalValue);
     holdFinal = finalValue;
-    console.log('Calculated.')
-    console.log('runningArray:',runningArray,'inputArray',inputArray,'gettingNumber variable',gettingNumber);
-    console.log('finalValue:',finalValue);
-    console.log('holdFinal',holdFinal);
 };
 
 function clearCalc(){
@@ -48,9 +44,6 @@ function clearCalc(){
     holdFinal = undefined;
     gettingNumber = undefined;
     refreshDisplay('DISPLAY');
-    console.log('Calculator cleared.');
-    console.log(runningArray,inputArray,numberArray,operatorArray);
-    console.log(holdFinal,gettingNumber);
 };
 function getNumberArray(){
     numberArray = inputArray.filter((arrayElement)=>{
@@ -114,8 +107,6 @@ function getInput(x){
         runningArray.push(x);
         refreshDisplay(runningArray.join(''));
     }
-    console.log('Getting input.');
-    console.log('runningArray:',runningArray,'inputArray',inputArray,'gettingNumber variable',gettingNumber);
 };
 
 function clearArray(x){
