@@ -19,6 +19,7 @@
     width: 80%;
     background-color: white;
     border-radius: 6px;
+    text-align: right;
 }
 .buttonContainer{
     margin:40px 20px;
@@ -30,13 +31,11 @@
     column-gap: 4px;
 }
 .btn{
+    flex: 1;
     padding:0px 20px;
     font-size: 30px;
     border-radius: 10px;
 }
 .clear,.undo{
     background-color: rgb(255, 78, 78);
-}
-.equals{
-    background-color: rgb(131, 162, 255);
 }
